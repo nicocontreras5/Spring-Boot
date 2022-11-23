@@ -1,4 +1,5 @@
 package com.example.demo.controller;
+import com.example.demo.dto.CarreraDTO;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entity.Carrera;
@@ -20,7 +21,7 @@ public class CarreraController {
 	@Autowired
 	private CarreraService carreraService;
 
-	@PostMapping("")
+	@RequestMapping(value="", method=RequestMethod.POST,produces="application/json", consumes ="application/json")
 	@Operation(
             summary = "Agregar una carrera nueva.",
             description = "funcionalidad para agregar una carrera nueva.",
@@ -35,7 +36,7 @@ public class CarreraController {
                     @ApiResponse(description = "Internal error", responseCode = "500", content = @Content)
             }
     )
-	public ResponseEntity<?> agregarCarrera(@RequestBody Carrera c){
+	public ResponseEntity<?> agregarCarrera(@RequestBody CarreraDTO c){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(carreraService.agregarCarrera(c));
         }catch (Exception e){

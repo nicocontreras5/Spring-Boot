@@ -1,4 +1,5 @@
 package com.example.demo.controller;
+import com.example.demo.dto.EstudianteDTO;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.entity.Estudiante;
@@ -35,7 +36,7 @@ public class EstudianteController {
                     @ApiResponse(description = "Internal error", responseCode = "500", content = @Content)
             }
     )
-	public ResponseEntity<?> agregarEstudiante(@RequestBody Estudiante estudiante){
+	public ResponseEntity<?> agregarEstudiante(@RequestBody EstudianteDTO estudiante){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(estudianteService.agregarEstudiante(estudiante));
         }catch (Exception e){

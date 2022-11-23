@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.List;
 
+import com.example.demo.dto.EstudianteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +15,8 @@ public class EstudianteService {
 	@Autowired
 	private EstudianteRepository estudianteRepository;
 
-	public Estudiante agregarEstudiante(Estudiante e) {
-		return estudianteRepository.save(e);
+	public Estudiante agregarEstudiante(EstudianteDTO e) {
+		return estudianteRepository.save(new Estudiante( e.getDNI(),e.getNombre(),e.getApellido(),e.getEdad(),e.getGenero(),e.getCiudad(),e.getNum_libreta()));
 	}
 	
 	public List<Estudiante> getEstudiantes() {
